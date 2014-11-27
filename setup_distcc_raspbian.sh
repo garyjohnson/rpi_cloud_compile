@@ -11,7 +11,7 @@ echo $PASSWORD | sudo -S apt-get install sshpass util-linux gnu-fdisk git net-to
 libiberty_dir = mktemp -d
 cd $libiberty_dir
 wget https://toolbox-of-eric.googlecode.com/files/libiberty.tar.gz
-tar -xzvf libibterty.tar.gz
+tar -xzvf libiberty.tar.gz
 cd $libiberty_dir/libiberty
 echo $PASSWORD | sudo -S ./configure
 echo $PASSWORD | sudo -S make
