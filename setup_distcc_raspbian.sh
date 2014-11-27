@@ -30,11 +30,11 @@ make
 echo $PASSWORD | sudo -S make install
 rm -r $distcc_dir
 
-echo $PASSWORD | sudo -S ln -s /usr/local/bin/distcc /usr/local/bin/gcc
-echo $PASSWORD | sudo -S ln -s /usr/local/bin/distcc /usr/local/bin/cc
-echo $PASSWORD | sudo -S ln -s /usr/local/bin/distcc /usr/local/bin/g++
-echo $PASSWORD | sudo -S ln -s /usr/local/bin/distcc /usr/local/bin/c++
-echo $PASSWORD | sudo -S ln -s /usr/local/bin/distcc /usr/local/bin/cpp
+echo $PASSWORD | sudo -S ln -sf /usr/local/bin/distcc /usr/local/bin/gcc
+echo $PASSWORD | sudo -S ln -sf /usr/local/bin/distcc /usr/local/bin/cc
+echo $PASSWORD | sudo -S ln -sf /usr/local/bin/distcc /usr/local/bin/g++
+echo $PASSWORD | sudo -S ln -sf /usr/local/bin/distcc /usr/local/bin/c++
+echo $PASSWORD | sudo -S ln -sf /usr/local/bin/distcc /usr/local/bin/cpp
 
 ssh-keygen -t rsa -C distcc_build -f ~/.ssh/id_rsa_distcc_build -q -P ""
 sshpass -p $DISTCC_PASSWORD scp ~/.ssh/id_rsa_distcc_build.pub $DISTCC_USER@$BUILD_IP:/home/$DISTCC_USER/.ssh/authorized_keys_distcc_build
