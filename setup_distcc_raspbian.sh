@@ -2,8 +2,11 @@
 
 DISTCC_USER="distcc"
 read -s -p "Enter password for sudo commands: " PASSWORD
+echo -e "\n"
 read -p "Enter IP address for build executor: " BUILD_IP
+echo -e "\n"
 read -s -p "Enter password for $DISTCC_USER user on build executor: " DISTCC_PASSWORD
+echo -e "\n"
 
 echo $PASSWORD | sudo -S apt-get update
 echo $PASSWORD | sudo -S apt-get install sshpass util-linux gnu-fdisk git net-tools git-core subversion autoconf automake python python-dev libgtk2.0-dev binutils-dev ntp -y
