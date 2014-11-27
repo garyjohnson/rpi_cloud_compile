@@ -18,7 +18,7 @@ cd $libiberty_dir/libiberty
 echo $PASSWORD | sudo -S ./configure
 echo $PASSWORD | sudo -S make
 echo $PASSWORD | sudo -S make install
-rm -r $libiberty_dir
+echo $PASSWORD | sudo -S rm -r $libiberty_dir
 
 distcc_dir=$(mktemp -d -t distcc.XXXXXX)
 cd $distcc_dir
@@ -28,7 +28,7 @@ cd $distcc_dir/distcc-read-only
 ./configure --with-gtk
 make
 echo $PASSWORD | sudo -S make install
-rm -r $distcc_dir
+echo $PASSWORD | sudo -S rm -r $distcc_dir
 
 echo $PASSWORD | sudo -S ln -sf /usr/local/bin/distcc /usr/local/bin/gcc
 echo $PASSWORD | sudo -S ln -sf /usr/local/bin/distcc /usr/local/bin/cc
