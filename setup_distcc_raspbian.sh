@@ -10,7 +10,7 @@ echo
 echo $PASSWORD | sudo -S apt-get update
 echo $PASSWORD | sudo -S apt-get install sshpass util-linux gnu-fdisk git net-tools git-core subversion autoconf automake python python-dev libgtk2.0-dev binutils-dev ntp -y
 
-libiberty_dir=mktemp -d
+libiberty_dir=$(mktemp -d -t libiberty)
 cd $libiberty_dir
 wget https://toolbox-of-eric.googlecode.com/files/libiberty.tar.gz
 tar -xzvf libiberty.tar.gz
@@ -20,7 +20,7 @@ echo $PASSWORD | sudo -S make
 echo $PASSWORD | sudo -S make install
 rm -r $libiberty_dir
 
-distcc_dir=mktemp -d
+distcc_dir=$(mktemp -d -t distcc)
 cd $distcc_dir
 svn checkout http://distcc.googlecode.com/svn/trunk/ distcc-read-only
 cd $distcc_dir/distcc-read-only
