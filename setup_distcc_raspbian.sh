@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
-DISTCC_USER = distcc
+DISTCC_USER="distcc"
 read -s -p "Enter password for sudo commands: " PASSWORD
-read -s "Enter IP address for build executor: " BUILD_IP
+read -p "Enter IP address for build executor: " BUILD_IP
 read -s -p "Enter password for $DISTCC_USER user on build executor: " DISTCC_PASSWORD
 
 echo $PASSWORD | sudo -S apt-get update

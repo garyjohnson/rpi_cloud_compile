@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 read -s -p "Enter password for distcc user (put it somewhere safe!): " PASSWORD
 
