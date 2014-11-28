@@ -4,6 +4,7 @@ read -s -p "Enter password for distcc user (put it somewhere safe!): " PASSWORD
 
 useradd -m distcc
 echo "distcc:$PASSWORD" | chpasswd
+chsh -s /bin/bash distcc
 
 sudo adduser distcc sudo
 su distcc <<EOSU
