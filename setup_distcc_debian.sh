@@ -10,7 +10,7 @@ su distcc <<EOSU
 echo $PASSWORD | sudo -S apt-get update
 echo $PASSWORD | sudo -S apt-get install util-linux gnu-fdisk git net-tools git-core subversion autoconf automake python python-dev libgtk2.0-dev binutils-dev ntp libc6-i386 lib32z1 lib32stdc++6 -y
 
-distcc_dir=$(mktemp -d -t distcc.XXXXXX)
+distcc_dir=$(echo $PASSWORD | sudo -S mktemp -d -t distcc.XXXXXX)
 cd $distcc_dir
 svn checkout http://distcc.googlecode.com/svn/trunk/ distcc-read-only
 cd $distcc_dir/distcc-read-only
