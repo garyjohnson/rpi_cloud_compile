@@ -11,16 +11,13 @@ su distcc <<EOSU
 echo $PASSWORD | sudo -S apt-get update
 echo $PASSWORD | sudo -S apt-get install util-linux gnu-fdisk git net-tools git-core subversion autoconf automake python python-dev libgtk2.0-dev binutils-dev ntp libc6-i386 lib32z1 lib32stdc++6 -y
 
-echo $PASSWORD | sudo -S chmod -R a+rw /tmp
-distcc_dir=$(echo $PASSWORD | sudo -S mktemp -d -t distcc.XXXXXX)
-cd $distcc_dir
+cd ~
 svn checkout http://distcc.googlecode.com/svn/trunk/ distcc-read-only
-cd $distcc_dir/distcc-read-only
+cd ~/distcc-read-only
 ./autogen.sh
 ./configure --with-gtk
 make
 echo $PASSWORD | sudo -S make install
-echo $PASSWORD | sudo -S rm -r $distcc_dir
 
 cd ~
 git clone https://github.com/raspberrypi/tools.git --depth=1
