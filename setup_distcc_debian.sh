@@ -27,4 +27,9 @@ echo $PASSWORD | sudo -S ln -sf arm-linux-gnueabihf-gcc cc
 echo $PASSWORD | sudo -S ln -sf arm-linux-gnueabihf-c++ c++
 echo $PASSWORD | sudo -S ln -sf arm-linux-gnueabihf-cpp cpp
 echo $PASSWORD | sudo -S ln -sf arm-linux-gnueabihf-g++ g++
+
+echo 'PATH="/home/distcc/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"' >> /etc/environment
+echo 'DISTCC_TCP_CORK=0' >> /etc/environment
+
+mkdir ~/.ssh
 EOSU

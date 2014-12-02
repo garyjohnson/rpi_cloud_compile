@@ -37,12 +37,12 @@ echo $PASSWORD | sudo -S ln -sf /usr/local/bin/distcc /usr/local/bin/c++
 echo $PASSWORD | sudo -S ln -sf /usr/local/bin/distcc /usr/local/bin/cpp
 
 ssh-keygen -t rsa -C distcc_build -f ~/.ssh/id_rsa_distcc_build -q -P ""
-sshpass -p $DISTCC_PASSWORD scp ~/.ssh/id_rsa_distcc_build.pub $DISTCC_USER@$BUILD_IP:/home/$DISTCC_USER/.ssh/authorized_keys_distcc_build
+sshpass -p $DISTCC_PASSWORD scp ~/.ssh/id_rsa_distcc_build.pub $DISTCC_USER@$BUILD_IP:/home/$DISTCC_USER/.ssh/authorized_keys2
 
-echo DISTCC_HOSTS="$DISTCC_USER@$BUILD_IP/16" >> ~/.bash_profile
-echo DISTCC_BACKOFF_PERIOD=0 >> ~/.bash_profile
-echo DISTCC_IO_TIMEOUT=3000 >> ~/.bash_profile
-echo DISTCC_SKIP_LOCAL_RETRY=1 >> ~/.bash_profile
-echo PATH=/usr/local/bin:$PATH >> ~/.bash_profile
-# can we get this over to the other machine?
-echo DISTCC_PATH=/home/$DISTCC_USER/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin:/home/$DISTCC_USER/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/arm-linux-gnueabihf/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games >> ~/.bash_profile
+echo 'export DISTCC_HOSTS="$DISTCC_USER@$BUILD_IP/16"' >> ~/.bash_profile
+echo 'export DISTCC_BACKOFF_PERIOD=0' >> ~/.bash_profile
+echo 'export DISTCC_IO_TIMEOUT=3000' >> ~/.bash_profile
+echo 'export DISTCC_SKIP_LOCAL_RETRY=1' >> ~/.bash_profile
+echo 'export PATH=/usr/local/bin:\$PATH' >> ~/.bash_profile
+echo $PASSWORD | sudo -S chmod +x ~/.bash_profile
+source ~/.bash_profile
