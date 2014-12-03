@@ -39,7 +39,8 @@ echo $PASSWORD | sudo -S ln -sf /usr/local/bin/distcc /usr/local/bin/cpp
 ssh-keygen -t rsa -C distcc_build -f ~/.ssh/id_rsa_distcc_build -q -P ""
 sshpass -p $DISTCC_PASSWORD scp ~/.ssh/id_rsa_distcc_build.pub $DISTCC_USER@$BUILD_IP:/home/$DISTCC_USER/.ssh/authorized_keys2
 
-echo 'export DISTCC_HOSTS="$DISTCC_USER@$BUILD_IP/16"' >> ~/.bash_profile
+echo $PASSWORD | sudo -S echo '$DISTCC_USER@$BUILD_IP/16' >> /usr/local/etc/distcc/hosts
+
 echo 'export DISTCC_BACKOFF_PERIOD=0' >> ~/.bash_profile
 echo 'export DISTCC_IO_TIMEOUT=3000' >> ~/.bash_profile
 echo 'export DISTCC_SKIP_LOCAL_RETRY=1' >> ~/.bash_profile
